@@ -7,8 +7,14 @@
 int main() {
   // Área para definição das variáveis para armazenar as propriedades das cidades
   char estado[30], codigo[30], cidade[30];
-  int populacao, pontosTuristicos;
-  float area, pib, densidadePop, pibCapta;
+  int pontosTuristicos;
+  unsigned int populacao;
+  float area, pib, densidadePop, pibCapta, superPoder;
+
+  //Área para definificação das variáveis que irão armazenar os valores da Carta 01
+  int c1PontosTuristicos;
+  unsigned int c1Populacao;
+  float c1Area, c1Pib, c1DensidadePop, c1PibCapta, c1SuperPoder;
 
   //Introdução do sistema
   printf("***** BEM VINDO AO SUPER TRUNFO! *****\n");
@@ -28,20 +34,29 @@ int main() {
   // Variáveis de valor inteiro
   printf("\nQual a população total da cidade? ");
   scanf("%d", &populacao);
+  c1Populacao = populacao;
   printf("\nQuantos pontos turísticos há no local? ");
   scanf("%d", &pontosTuristicos);
+  c1PontosTuristicos = pontosTuristicos;
 
   // Variáveis de valor flutuante
   printf("\nQual a área total da cidade? ");
   scanf("%f", &area);
+  c1Area = area;
   printf("\nQual o Produto Interno Bruto (PIB)? ");
   scanf("%f", &pib);
+  c1Pib = pib;
 
   //Cálculo da densidade demográfica da PRIMEIRA cidade
   densidadePop = (float) area / populacao;
+  c1DensidadePop = densidadePop;
 
   //Cálculo do PIB per capta da PRIMEIRA cidade
   pibCapta = (float) pib / populacao;
+  c1PibCapta = pibCapta;
+
+  //Cálculo do Super Poder da PRIMEIRA cidade
+  c1SuperPoder = (float) c1Populacao + c1Area + c1Pib + c1PontosTuristicos + c1PibCapta - c1DensidadePop;
 
   // Área para exibição dos dados da PRIMEIRA cidade
   printf("\n**** ATENÇÃO: Primeira carta criada com SUCESSO! ****\n");
@@ -54,6 +69,7 @@ int main() {
   printf("\nProduto Interno Bruto (PIB): R$%.2f", pib);
   printf("\nDensidade demográfica: %.2f habitantes por km²", densidadePop);
   printf("\nPIB per capta: R$%.2f\n", pibCapta);
+  printf("\nSuper Poder: %.2f", c1SuperPoder);
 
   // Área para entrada de dados da SEGUNDA carta
   // Variáveis do tipo string
@@ -85,6 +101,9 @@ int main() {
   //Cálculo do PIB per capta da SEGUNDA cidade
   pibCapta = (float) pib / populacao;
 
+  //Cálculo do Super Poder da Carta 02
+  superPoder = (float) populacao + area + pib + pontosTuristicos + pibCapta - densidadePop;
+
   // Área para exibição dos dados da SEGUNDA cidade
   printf("\n**** ATENÇÃO: Segunda carta criada com SUCESSO! ****");
   printf("\nCARTA 02: %s", cidade);
@@ -96,9 +115,19 @@ int main() {
   printf("\nProduto Interno Bruto (PIB): R$%.2f", pib);
   printf("\nDensidade demográfica: %.2f habitantes por km²", densidadePop);
   printf("\nPIB per capta: R$%.2f\n", pibCapta);
+  printf("\nSuper Poder: %.2f", superPoder);
 
 
-  printf("\nCADASTROS FINALIZADOS!\nObrigado!\n\n");
+  printf("\nCADASTROS FINALIZADOS!\nObrigado!\n\n.\n.\n.\n ***** RESULTADOS *****\n***** Comparação de Cartas *****\n");
+  printf("\nConsidere 1 para a CARTA 01 e 0 para a CARTA 02\n");
+
+  printf("\nPopulacação: %d", c1Populacao > populacao);
+  printf("\nÁrea: %d", c1Area > area);
+  printf("\nPIB: %d", c1Pib > pib);
+  printf("\nPontos Turísticos: %d", c1PontosTuristicos > pontosTuristicos);
+  printf("\nDensidade Populacional: %d", c1DensidadePop < densidadePop);
+  printf("\nPIB per capta: %d", c1PibCapta > pibCapta);
+  printf("\nSuper Poder: %d\n.\n.\n", c1SuperPoder > superPoder);
 
 return 0;
 } 
